@@ -85,7 +85,8 @@ class TeachersController extends Controller
                 $img->move(public_path('uploads'), $img_name);
 
                 // Delete Old File
-                $filePath = $request->file_path;
+                $get_old_img = teachers::find($teacherid);
+                $filePath = $get_old_img->image;
                 File::delete($filePath);
 
                 // Update Teacher
@@ -140,7 +141,12 @@ class TeachersController extends Controller
     {
         try {
             $id = $request->id;
+            // Delete Old File
+            $old_img_url = teachers::find($id);
+            $old_filePath = $old_img_url->image;
+            File::delete($old_filePath);
             teachers::where('id', $id)->delete();
+
             return redirect()->back();
         } catch (Exception $exception) {
             return response()->json([

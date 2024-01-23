@@ -37,7 +37,7 @@
             <input type="text" name="update_phone" value="{{ $teacherdata->phone }}" id="update_phone"><br>
 
             <label for="update_image">Images</label><br>
-            <input type="file" name="update_image" id="update_image"><br><br>
+            <input type="file" name="update_image"><br><br>
 
             <button type="submit">Submit</button>
         </form>
